@@ -26,4 +26,19 @@ def new_game():
     game = BoggleGame()
     games[game_id] = game
 
-    return {"gameId": "need-real-id", "board": "need-real-board"}
+    info = {"gameId": game_id, "board": games[game_id].board}
+
+    return jsonify(info)
+    # return {"gameId": "need-real-id", "board": "need-real-board"}
+
+
+@app.route("/api/score-word")
+def score_word():
+    """ accepts POST rqst w/ JSON for gameId and word
+        checks if word is legal:
+            in word list
+            findable on board
+        returns JSON response
+
+    """
+    await axios.post()

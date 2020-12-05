@@ -11,45 +11,11 @@
         <!-- ultimately, you'll write the JS to make a dynamic board ---
          when you do, it will look like this: -->
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          
         </tbody>
       </table>
 
-      <form method="POST" id="newWordForm">
+      <form action="/api/score-word" method="POST" id="newWordForm">
         <input
           name="word"
           id="wordInput"
@@ -57,7 +23,7 @@
           autofocus
           aria-label="Word"
         />
-        <button class="word-input-btn">Go</button>
+        <button id="submit-word" type="submit" class="word-input-btn">Go</button>
       </form>
     </main>
 

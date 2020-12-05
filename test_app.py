@@ -49,3 +49,34 @@ class BoggleAppTestCase(TestCase):
             
 
        
+    def test_api_score_word(self):
+        """ Check if word  is legal """
+        with self.client as client:
+            response = client.get('/api/new-game')
+    
+        gameid = response.get_json()['gameId']
+        game = games[gameid]
+        game.board = [
+            ['X', 'Y', 'S', 'D', 'A'],
+            ['F', 'D', 'W', 'E', 'P'],
+            ['S', 'D', 'W', 'E', 'P'],
+            ['D', 'E', 'S', 'Q', 'L'],
+            ['S', 'E', 'W', 'V', 'E']
+        ]
+    
+        response = self.client.post('/api/score-word', json={
+                'gameId': gameid,
+                'word': 'APPLE'
+            })
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json(), {'result': 'ok'})
+
+        
+        response = self.client.post('/api/score-word', json={
+                'gameId': gameid,
+                'word': 'PEAR'
+                })
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json(), {'result': "not-on-board"})

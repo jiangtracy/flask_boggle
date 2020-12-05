@@ -32,21 +32,14 @@ def new_game():
     # return {"gameId": "need-real-id", "board": "need-real-board"}
 
 
-@app.route("/api/score-word", methods=['POST'])
+@app.route("/api/score-word", methods=["POST"])
 def score_word():
-    """ accepts POST rqst w/ JSON for gameId and word
-        checks if word is legal:
-            in word list
-            findable on board
-        returns JSON response
-
     """
-   
+    """
+    
     word = request.json['word'].upper()
     gameid = request.json['gameId']
-
-    breakpoint()
-
+  
     current_game = games[gameid]
 
     if not current_game.is_word_in_word_list(word):

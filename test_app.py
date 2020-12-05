@@ -47,4 +47,5 @@ class BoggleAppTestCase(TestCase):
             self.assertIn(response_dict["gameId"], games.keys())
             self.assertTrue(type(response_dict["board"]) is list)
             
-                
+
+       

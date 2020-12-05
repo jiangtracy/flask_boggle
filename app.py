@@ -32,7 +32,7 @@ def new_game():
     # return {"gameId": "need-real-id", "board": "need-real-board"}
 
 
-@app.route("/api/score-word")
+@app.route("/api/score-word", methods=['POST'])
 def score_word():
     """ accepts POST rqst w/ JSON for gameId and word
         checks if word is legal:
@@ -41,4 +41,20 @@ def score_word():
         returns JSON response
 
     """
-    await axios.post()
+   
+    word = request.json['word'].upper()
+    gameid = request.json['gameId']
+
+    breakpoint()
+
+    current_game = games[gameid]
+
+    if not current_game.is_word_in_word_list(word):
+        return jsonify({'result': "not-word"})
+    elif not current_game.check_word_on_board(word):
+        return jsonify({'result': "not-on-board"})
+    else:
+        return jsonify({'result': "ok"})
+   
+
+
